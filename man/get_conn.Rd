@@ -16,5 +16,6 @@ a database connection
 Set up a database connection
 }
 \examples{
-
+get_conn('edify')
+get_conn('REPT')
 }

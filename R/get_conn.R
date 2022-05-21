@@ -6,7 +6,8 @@
 #' @export
 #'
 #' @examples
-#'
+#' get_conn('edify')
+#' get_conn('REPT')
 
 get_conn <- function(dsn) {
   # Server-side db connection with RStudio Connect
