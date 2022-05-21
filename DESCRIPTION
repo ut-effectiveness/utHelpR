@@ -19,5 +19,5 @@ Imports:
     RPostgres
 Suggests: 
     tidyverse
-URL: https://github.com/MattNickodemus/utHelpR
-BugReports: https://github.com/MattNickodemus/utHelpR/issues
+URL: https://github.com/dsu-effectiveness/utHelpR
+BugReports: https://github.com/dsu-effectiveness/utHelpR/issues
