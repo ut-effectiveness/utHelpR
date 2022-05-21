@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_conn.R
 \name{get_conn}
 \alias{get_conn}
-\title{Title}
+\title{Set up a database connection}
 \usage{
 get_conn(dsn)
 }
@@ -13,9 +13,8 @@ get_conn(dsn)
 a database connection
 }
 \description{
-Title
+Set up a database connection
 }
 \examples{
-get_conn('edify')
-get_conn('REPT')
+
 }

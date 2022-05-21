@@ -1,4 +1,4 @@
-#' Title
+#' Set up a database connection
 #'
 #' @param dsn A DSN entry: edify, PROD, REPT, BRPT, etc...
 #'
@@ -6,8 +6,7 @@
 #' @export
 #'
 #' @examples
-#' get_conn('edify')
-#' get_conn('REPT')
+#'
 
 get_conn <- function(dsn) {
   # Server-side db connection with RStudio Connect
