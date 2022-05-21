@@ -1,0 +1,23 @@
+Package: utHelpR
+Title: Utility functions for Utah Tech Office of Institutional Effectiveness
+Version: 0.0.0.9000
+Authors@R: c(
+  person("LeVoy", "Canfield", email = "levoy.canfield@utahtech.com", role = c("aut", "cre")),
+  person("Matt", "Nickodemus", email = "matt.nickodemus@utahtech.com", role = "aut")
+  )
+Description: This package contails utility functions for UT OIE.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    DBI,
+    here,
+    janitor,
+    keyring,
+    odbc,
+    RPostgres
+Suggests: 
+    tidyverse
+URL: https://github.com/MattNickodemus/utHelpR
+BugReports: https://github.com/MattNickodemus/utHelpR/issues
