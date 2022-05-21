@@ -2,13 +2,23 @@
 % Please edit documentation in R/set_edify_password.R
 \name{set_edify_password}
 \alias{set_edify_password}
-\title{Reset Edify Password}
+\title{Set Edify password}
 \usage{
 set_edify_password()
 }
-\value{
-
-}
 \description{
-Reset Edify Password
+\code{set_edify_password} will prompt you with a dialog box to input your new password
+from edify.
+}
+\details{
+\strong{To reset your Edify password}
+
+\itemize{
+\item Navigate to \href{https://dixie.edh.eab.com/}{Edify}.
+\item Select the SSO login.
+\item Login with your UT single sign-on credentials.
+\item Click the question mark in the upper left corner.
+\item Select User Profile
+\item Select Generate new credential.
+}
 }
