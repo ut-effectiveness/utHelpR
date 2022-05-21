@@ -18,7 +18,9 @@ Imports:
     keyring,
     magrittr,
     odbc,
-    RPostgres
+    readr,
+    RPostgres,
+    tibble
 Suggests: 
     tidyverse
 URL: https://github.com/dsu-effectiveness/utHelpR
