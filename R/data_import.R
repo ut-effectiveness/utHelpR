@@ -50,3 +50,18 @@ get_data_from_sql_url <- function(query_url, dsn) {
     mung_dataframe()
   return(df)
 }
+
+#' Get data from a rds source.
+#'
+#' @param file_name The rds file you want to load
+#'
+#' @return a dataframe containing the data from the .rds file
+#' @export
+#'
+#' @examples
+
+load_data_from_rds <- function(file_name) {
+  df <- readRDS( here::here('data', file_name) ) %>%
+    mung_dataframe()
+  return(df)
+}
