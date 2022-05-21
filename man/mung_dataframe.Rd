@@ -15,6 +15,3 @@ a clean dataframe
 \description{
 Munge dataframe
 }
-\examples{
-munge_dataframe(bob)
-}

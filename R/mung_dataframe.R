@@ -6,7 +6,6 @@
 #' @export
 #'
 #' @examples
-#' munge_dataframe(bob)
 
 mung_dataframe <- function(df) {
   df <- df %>%
