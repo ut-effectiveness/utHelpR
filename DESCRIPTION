@@ -15,6 +15,7 @@ Imports:
     here,
     janitor,
     keyring,
+    magrittr,
     odbc,
     RPostgres
 Suggests: 
