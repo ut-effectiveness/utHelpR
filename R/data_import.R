@@ -32,3 +32,21 @@ get_data_from_sql_file <- function(file_name, dsn) {
     mung_dataframe()
   return(df)
 }
+
+#' Get data from a sql url
+#'
+#' @param query_url the url of a sql query
+#' @param dsn A DSN entry: edify, PROD, REPT, BRPT, etc...
+#'
+#' @return a dataframe containing the results of your sql query
+#' @export
+#'
+#' @examples
+
+get_data_from_sql_url <- function(query_url, dsn) {
+  conn <- get_conn(dsn)
+  query <- read_file(query_url)
+  df <- dbGetQuery(conn, query) %>%
+    mung_dataframe()
+  return(df)
+}
