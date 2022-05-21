@@ -1,18 +1,23 @@
 #' Munge dataframe
 #'
-#' @param df
+#' @param df a dataframe you want to clean.
 #'
 #' @return a clean dataframe
 #' @export
 #'
+#' @importFrom dplyr mutate_if
+#' @importFrom janitor clean_names
+#' @importFrom magrittr %>%
+#' @importFrom tibble as_tibble
+#'
 #' @examples
 
 mung_dataframe <- function(df) {
-  df <- df %>%
+  output_df <- df %>%
     mutate_if(is.factor, as.character) %>%
     clean_names() %>%
     as_tibble()
-  return(df)
+  return(output_df)
 }
 
 #' Get data from a sql file
@@ -22,6 +27,9 @@ mung_dataframe <- function(df) {
 #'
 #' @return a dataframe containing the results of your sql query
 #' @export
+#'
+#' @importFrom readr read_file
+#' @importFrom DBI dbGetQuery
 #'
 #' @examples
 
@@ -41,6 +49,8 @@ get_data_from_sql_file <- function(file_name, dsn) {
 #' @return a dataframe containing the results of your sql query
 #' @export
 #'
+#' @importFrom readr read_file
+#' @importFrom DBI dbGetQuery
 #' @examples
 
 get_data_from_sql_url <- function(query_url, dsn) {

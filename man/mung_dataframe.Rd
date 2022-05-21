@@ -7,7 +7,7 @@
 mung_dataframe(df)
 }
 \arguments{
-\item{df}{}
+\item{df}{a dataframe you want to clean.}
 }
 \value{
 a clean dataframe
