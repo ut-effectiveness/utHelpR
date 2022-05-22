@@ -2,7 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit the .Rmd file -->
 <!-- `devtools::build_readme()` to build the README.md --->
 
-# utHelpR <img src="man/figures/ut_ie_logo.png" align="right" width="120" />
+# utHelpR <img src="man/figures/README-ut_ie_logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 
