@@ -13,11 +13,13 @@ RoxygenNote: 7.1.2
 Imports: 
     DBI,
     dplyr,
+    fs,
     here,
     janitor,
     keyring,
     magrittr,
     odbc,
+    purrr,
     readr,
     RPostgres,
     tibble
