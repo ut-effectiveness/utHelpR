@@ -5,6 +5,8 @@
 #' setting up a project. When you run `make_standard_folders()` you should be in
 #' the same directory as your .Rproj file.
 #'
+#' @export
+#'
 #' @importFrom purrr map
 #' @importFrom fs dir_ls
 

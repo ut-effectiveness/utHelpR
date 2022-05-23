@@ -14,6 +14,8 @@
 #' - Select User Profile
 #' - Select Generate new credential.
 #'
+#' @export
+#'
 #' @importFrom keyring key_set
 
 set_edify_password <- function() {
