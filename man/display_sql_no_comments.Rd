@@ -9,9 +9,6 @@ display_sql_no_comments(file)
 \arguments{
 \item{file}{The name of the sql file you want to display.}
 }
-\value{
-
-}
 \description{
 \code{display_sql_no_comments()} will display a sql file with the comments removed.
 Any comments indicated by the double dash -- will be removed. Multiline comments

@@ -22,6 +22,7 @@ Imports:
     purrr,
     readr,
     RPostgres,
+    stringr,
     tibble
 Suggests: 
     tidyverse
