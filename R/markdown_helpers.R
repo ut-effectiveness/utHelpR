@@ -28,7 +28,7 @@ display_sql_no_comments <- function(file) {
 #'
 #'@importFrom readr read_file
 
-diplay_sql_with_comments <- function(file) {
+display_sql_with_comments <- function(file) {
 
   x <- read_file(here::here('sql', 'clo_pull.sql'))
 
