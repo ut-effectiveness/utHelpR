@@ -34,7 +34,7 @@ mung_dataframe <- function(df) {
 #' @examples
 
 get_data_from_sql_file <- function(file_name, dsn) {
-  conn <- get_conn(dsn)
+  conn <- get_connection_object(dsn)
   query <- read_file( here::here('sql', file_name) )
   df <- dbGetQuery(conn, query) %>%
     mung_dataframe()
@@ -54,7 +54,7 @@ get_data_from_sql_file <- function(file_name, dsn) {
 #' @examples
 
 get_data_from_sql_url <- function(query_url, dsn) {
-  conn <- get_conn(dsn)
+  conn <- get_connection_object(dsn)
   query <- read_file(query_url)
   df <- dbGetQuery(conn, query) %>%
     mung_dataframe()
