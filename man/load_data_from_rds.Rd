@@ -15,3 +15,6 @@ a dataframe containing the data from the .rds file
 \description{
 Get data from a rds source.
 }
+\examples{
+
+}
