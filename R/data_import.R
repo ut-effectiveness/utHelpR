@@ -110,10 +110,9 @@ get_data_from_pin <- function(pin_name) {
 #' @return a dataframe with all content of the Excel spreadsheet
 #' @export
 #'
-#' @importFrom readxl read_excel
 #' @examples
 #' load_data_from_xlsx("additional_information.xlsx")
 load_data_from_xlsx <- function(file_name) {
-  df <- read_excel( here::here('data', file_name) )
+  df <- readxl::read_excel( here::here('data', file_name) )
   return(df)
 }
