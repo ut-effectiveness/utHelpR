@@ -11,9 +11,6 @@
 #' @importFrom RPostgres Postgres
 #' @importFrom keyring key_get
 #'
-#' @examples
-#' get_connection_object("edify")
-#' get_connection_object("REPT")
 
 get_connection_object <- function(dsn) {
   # Server-side db connection with RStudio Connect ####
@@ -31,11 +28,19 @@ get_connection_object <- function(dsn) {
   # Local db connection ####
   # These should trigger on a personal machine,
   # assuming all other dependent data io infrastructure is set up properly.
-  else if ( dsn == "edify" ) {
+  else if ( dsn == "edify-dev" ) {
     conn <- dbConnect( Postgres(),
                        dbname="analytics",
                        host="dixie.db.edh.eab.com",
                        port=51070,
+                       user=key_get("edify", "username"),
+                       password=key_get("edify", "password") )
+  }
+  else if ( dsn == "edify-prod" ) {
+    conn <- dbConnect( Postgres(),
+                       dbname="analytics",
+                       host="utahtech.db.edh.eab.com",
+                       port=51071,
                        user=key_get("edify", "username"),
                        password=key_get("edify", "password") )
   }

@@ -15,7 +15,3 @@ either a DBMS connection object, or an ODBC connection object, from DBI::dbConne
 \description{
 Set up a database connection
 }
-\examples{
-get_connection_object("edify")
-get_connection_object("REPT")
-}

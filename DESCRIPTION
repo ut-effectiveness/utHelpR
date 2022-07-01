@@ -2,7 +2,7 @@ Package: utHelpR
 Title: Utility functions for Utah Tech Office of Institutional Effectiveness
 Version: 0.0.0.9000
 Authors@R: c(
-  person("LeVoy", "Canfield", email = "levoy.canfield@utahtech.com", role = c("aut", "cre")),
+  person("LaVoy", "Canfield", email = "lavoy.canfield@utahtech.com", role = c("aut", "cre")),
   person("Matt", "Nickodemus", email = "matt.nickodemus@utahtech.com", role = "aut")
   )
 Description: This package contails utility functions for UT OIE.
@@ -19,8 +19,10 @@ Imports:
     keyring,
     magrittr,
     odbc,
+    pins,
     purrr,
     readr,
+    readxl,
     RPostgres,
     stringr,
     tibble

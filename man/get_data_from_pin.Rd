@@ -15,7 +15,3 @@ a dataframe containing all data from requested pin
 \description{
 Get data from a pin stored in RStudio Connect
 }
-\examples{
-get_data_from_pin(pin_name="student_type_audit_student_type_determination_variables_pin")
-
-}

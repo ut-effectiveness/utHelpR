@@ -4,12 +4,14 @@
 \alias{get_data_from_sql_file}
 \title{Get data from a sql file}
 \usage{
-get_data_from_sql_file(file_name, dsn)
+get_data_from_sql_file(file_name, dsn, context = "project")
 }
 \arguments{
-\item{file_name}{the name of the sql file that you want to use}
+\item{file_name}{The name of the SQL file you want to use.}
 
 \item{dsn}{A DSN entry: edify, PROD, REPT, BRPT, etc...}
+
+\item{context}{The R project context in which this SQL lives. Current options are "project", "shiny", and "sandbox".}
 }
 \value{
 a dataframe containing the results of your sql query
