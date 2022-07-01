@@ -14,7 +14,7 @@ from Edify.
 \strong{To set your Edify username}
 
 \itemize{
-\item Navigate to \href{https://dixie.edh.eab.com/}{Edify}.
+\item Navigate to \href{https://utahtech.db.edh.eab.com/}{Edify}.
 \item Select the SSO login.
 \item Login with your UT single sign-on credentials.
 \item Click the question mark in the upper-right corner.

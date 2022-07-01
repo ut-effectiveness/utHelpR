@@ -36,14 +36,6 @@ get_connection_object <- function(dsn) {
                        user=key_get("edify", "username"),
                        password=key_get("edify", "password") )
   }
-  else if ( dsn == "edify-dev" ) {
-    conn <- dbConnect( Postgres(),
-                       dbname="analytics",
-                       host="dixie.db.edh.eab.com",
-                       port=51070,
-                       user=key_get("edify", "username"),
-                       password=key_get("edify", "password") )
-  }
   else {
     conn <- dbConnect( odbc(),
                        DSN=dsn,
