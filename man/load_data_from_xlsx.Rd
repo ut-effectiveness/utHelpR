@@ -10,11 +10,8 @@ load_data_from_xlsx(file_name)
 \item{file_name}{the name of the file, assumed to be located in a directory called 'data'}
 }
 \value{
-a dataframe with all content of the Excel spreadsheet
+A dataframe with all content of the Excel spreadsheet.
 }
 \description{
 Load data from an Excel spreadsheet formatted file
-}
-\examples{
-load_data_from_xlsx("additional_information.xlsx")
 }
