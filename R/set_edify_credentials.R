@@ -7,7 +7,7 @@
 #'
 #' @details
 #'
-#' - Navigate to \href{https://dixie.edh.eab.com/}{Edify}.
+#' - Navigate to \href{https://utahtech.db.edh.eab.com/}{Edify}.
 #' - Select the SSO login.
 #' - Login with your UT single sign-on credentials.
 #' - Click the question mark in the upper-right corner.
@@ -33,7 +33,7 @@ set_edify_password <- function() {
 #'
 #' @details
 #'
-#' - Navigate to \href{https://dixie.edh.eab.com/}{Edify}.
+#' - Navigate to \href{https://utahtech.db.edh.eab.com/}{Edify}.
 #' - Select the SSO login.
 #' - Login with your UT single sign-on credentials.
 #' - Click the question mark in the upper-right corner.
