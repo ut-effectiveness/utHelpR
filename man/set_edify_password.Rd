@@ -2,16 +2,16 @@
 % Please edit documentation in R/set_edify_credentials.R
 \name{set_edify_password}
 \alias{set_edify_password}
-\title{Set Edify password}
+\title{Set Edify Password}
 \usage{
 set_edify_password()
 }
 \description{
 \code{set_edify_password} will prompt you with a dialog box to input your new password
-from edify.
+for Edify DB connections.
 }
 \details{
-\strong{To reset your Edify password}
+\strong{To reset your Edify password.}
 
 \itemize{
 \item Navigate to \href{https://utahtech.edh.eab.com/}{Edify}.

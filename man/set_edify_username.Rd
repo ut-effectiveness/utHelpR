@@ -2,16 +2,16 @@
 % Please edit documentation in R/set_edify_credentials.R
 \name{set_edify_username}
 \alias{set_edify_username}
-\title{Set Edify username}
+\title{Set Edify User Name}
 \usage{
 set_edify_username()
 }
 \description{
-\code{set_edify_username} will prompt you with a dialog box to input your username
-from Edify.
+\code{set_edify_username} will prompt you with a dialog box to input your user name
+for Edify DB connections.
 }
 \details{
-\strong{To set your Edify username}
+\strong{To set your Edify user name.}
 
 \itemize{
 \item Navigate to \href{https://utahtech.edh.eab.com/}{Edify}.
