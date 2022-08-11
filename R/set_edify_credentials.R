@@ -1,9 +1,9 @@
-#' Set Edify password
+#' Set Edify Password
 #'
 #' `set_edify_password` will prompt you with a dialog box to input your new password
-#' from edify.
+#' for Edify DB connections.
 #'
-#' @details **To reset your Edify password**
+#' @details **To reset your Edify password.**
 #'
 #' @details
 #'
@@ -15,21 +15,22 @@
 #' - Select Generate new credential.
 #' - New password can be found here.
 #'
+#' @importFrom keyring key_set
+#'
 #' @export
 #'
-#' @importFrom keyring key_set
 
 set_edify_password <- function() {
   # for storing an individual's password
   key_set(service="edify", username="password")
 }
 
-#' Set Edify username
+#' Set Edify User Name
 #'
-#' `set_edify_username` will prompt you with a dialog box to input your username
-#' from Edify.
+#' `set_edify_username` will prompt you with a dialog box to input your user name
+#' for Edify DB connections.
 #'
-#' @details **To set your Edify username**
+#' @details **To set your Edify user name.**
 #'
 #' @details
 #'
@@ -40,9 +41,10 @@ set_edify_password <- function() {
 #' - Select User Profile.
 #' - Edify username can be found here.
 #'
+#' @importFrom keyring key_set
+#'
 #' @export
 #'
-#' @importFrom keyring key_set
 
 set_edify_username <- function() {
   # for storing an individual's username
