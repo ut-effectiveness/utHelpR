@@ -12,6 +12,8 @@
 #' @param delim A character that will be placed between data fields, in the output file (e.g. "|").
 #' @param with_header Boolean. Will determine if the column names of input_df will be included in the output file.
 #'
+#' @importFrom utils write.table
+#'
 #' @return Returns nothing.
 #' @export
 #'
@@ -22,7 +24,7 @@ save_data_as_file <- function(input_df, file_name, delim="|", with_header=FALSE)
               sep = delim,
               na = "",
               row.names = FALSE,
-              col.names = with_col_names,
+              col.names = with_header,
               quote = FALSE)
   return( NULL )
 }
