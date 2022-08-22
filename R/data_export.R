@@ -11,20 +11,21 @@
 #' @param file_name The name of the file that will be saved (e.g. "my_data.txt").
 #' @param delim A character that will be placed between data fields, in the output file (e.g. "|").
 #' @param with_header Boolean. Will determine if the column names of input_df will be included in the output file.
+#' @param quote Boolean. If TRUE will wrap each data column in double quotes.
 #'
 #' @importFrom utils write.table
 #'
 #' @return Returns nothing.
 #' @export
 #'
-save_data_as_file <- function(input_df, file_name, delim="|", with_header=FALSE) {
+save_data_as_file <- function(input_df, file_name, delim="|", with_header=FALSE, quote=FALSE) {
   file_location <- here::here("sensitive", file_name)
-  write.table(input_df,
-              file = file_location,
-              sep = delim,
-              na = "",
-              row.names = FALSE,
-              col.names = with_header,
-              quote = FALSE)
+  write.table( input_df,
+               file = file_location,
+               sep = delim,
+               na = "",
+               row.names = FALSE,
+               col.names = with_header,
+               quote = quote )
   return( NULL )
 }

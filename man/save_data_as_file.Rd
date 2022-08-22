@@ -4,7 +4,13 @@
 \alias{save_data_as_file}
 \title{Save Data as File}
 \usage{
-save_data_as_file(input_df, file_name, delim = "|", with_header = FALSE)
+save_data_as_file(
+  input_df,
+  file_name,
+  delim = "|",
+  with_header = FALSE,
+  quote = FALSE
+)
 }
 \arguments{
 \item{input_df}{A Data Frame. Note: can contain any arbitrary data fields.}
@@ -14,6 +20,8 @@ save_data_as_file(input_df, file_name, delim = "|", with_header = FALSE)
 \item{delim}{A character that will be placed between data fields, in the output file (e.g. "|").}
 
 \item{with_header}{Boolean. Will determine if the column names of input_df will be included in the output file.}
+
+\item{quote}{Boolean. If TRUE will wrap each data column in double quotes.}
 }
 \value{
 Returns nothing.
