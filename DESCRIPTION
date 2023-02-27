@@ -9,7 +9,11 @@ Description: This package contails utility functions for UT OIE.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
+<<<<<<< Updated upstream
 RoxygenNote: 7.2.1
+=======
+RoxygenNote: 7.2.3
+>>>>>>> Stashed changes
 Imports: 
     DBI,
     dplyr,
@@ -25,7 +29,8 @@ Imports:
     readxl,
     RPostgres,
     stringr,
-    tibble
+    tibble,
+    utils
 Suggests: 
     tidyverse
 URL: https://github.com/dsu-effectiveness/utHelpR
