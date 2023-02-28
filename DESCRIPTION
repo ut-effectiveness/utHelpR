@@ -9,11 +9,7 @@ Description: This package contails utility functions for UT OIE.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-<<<<<<< Updated upstream
-RoxygenNote: 7.2.1
-=======
 RoxygenNote: 7.2.3
->>>>>>> Stashed changes
 Imports: 
     DBI,
     dplyr,
