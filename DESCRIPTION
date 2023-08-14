@@ -26,7 +26,8 @@ Imports:
     RPostgres,
     stringr,
     tibble,
-    utils
+    utils,
+    usethis
 Suggests: 
     tidyverse
 URL: https://github.com/dsu-effectiveness/utHelpR

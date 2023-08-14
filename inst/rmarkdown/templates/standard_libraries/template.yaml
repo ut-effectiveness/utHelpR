@@ -1,0 +1,4 @@
+name: standard_libraries
+description: >
+   This is a place to store some of the most commonly used libraries and code chunks
+create_dir: FALSE
