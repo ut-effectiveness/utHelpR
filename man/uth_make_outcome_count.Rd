@@ -2,15 +2,28 @@
 % Please edit documentation in R/uth_make_outcome_count.R
 \name{uth_make_outcome_count}
 \alias{uth_make_outcome_count}
-\title{uth_make_outcome_count}
+\title{Make a table of column aggregation counts}
 \usage{
 uth_make_outcome_count(.data, ...)
 }
 \arguments{
-\item{.data}{A data frame with columns you would like to aggregate on}
+\item{.data}{A data frame with columns you would like to aggregate on.}
 
-\item{...}{the columns you would lke to aggregate over}
+\item{...}{The columns you would like to aggregate over. Don't forget the
+column you are counting, i.e. student number.}
+}
+\value{
+A table with aggregated counts of column attributes
 }
 \description{
-uth_make_outcome_count
+Use this function to aggregate counts in a data frame. A typical use case
+would involve a data frame with student ids and a collection of attributes. The utHelpR
+package includes a data frame called fake_enrollment with this structure. The following
+code illustrates how to use uth_make_outcome_count
+
+test <- fake_enrollment \%>\%
+select(student_id, gender_code) \%>\%
+filter(!is.na(gender_code))
+
+uth_make_outcome_count(test, gender_code)
 }
