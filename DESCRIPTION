@@ -29,6 +29,12 @@ Imports:
     utils,
     usethis
 Suggests: 
+    knitr,
+    rmarkdown,
     tidyverse
 URL: https://github.com/dsu-effectiveness/utHelpR
 BugReports: https://github.com/dsu-effectiveness/utHelpR/issues
+Depends: 
+    R (>= 2.10)
+LazyData: true
+VignetteBuilder: knitr

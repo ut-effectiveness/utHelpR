@@ -1,0 +1,104 @@
+---
+title: "counting"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{counting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(utHelpR)
+library(dplyr)
+library(purrr)
+library(gt)
+```
+
+In this vignette, we will describe how to use `uth_make_outcome_count` to compute headcount. We will also show how to quickly compute the aggregate headcount over several student attributes using the `{purrr}` library. 
+
+We will start by creating a data frame with student information from `fake_enrollment`. `fake_enrollment` is fake training data set with `NA` values in several columns. We will start by selecting the student attributes we want to aggregate over, and then filtering out the `NA` values.
+
+```{r}
+test_df <- fake_enrollment %>% 
+  select(student_id, 
+         gender_code,
+         student_type_code, 
+         is_international) %>% 
+  filter(!is.na(gender_code)) %>% 
+  filter(!is.na(student_type_code)) %>% 
+  filter(!is.na(is_international))
+```
+
+Suppose we just want to get a headcount of the whole student body aggregated by gender code. 
+
+```{r}
+headcount_by_gender <- test_df %>% 
+  uth_make_outcome_count(gender_code)
+```
+
+This produces a single data frame.
+
+```{r}
+gt(headcount_by_gender)
+```
+
+What if we want to produce the headcount of all female students aggregated by student type code?
+
+```{r}
+female_headcount_by_student_type_code <- test_df %>% 
+  filter(gender_code == 'F') %>%
+  select(student_id, student_type_code) %>% 
+  uth_make_outcome_count(student_type_code)
+
+gt(female_headcount_by_student_type_code)
+```
+
+Next suppose we want to produce the headcount for all students, but now we want to aggregate by gender and student type code.
+
+```{r}
+total_headcount_by_student_type_and_gender <- test_df %>% 
+  select(student_id, gender_code, student_type_code) %>% 
+  uth_make_outcome_count(gender_code, student_type_code)
+
+gt(total_headcount_by_student_type_and_gender)
+```
+
+Now suppose that we want to compute the headcount for the total student population, but we want to aggregate this over several different combinations of our three colums. Here we will use the `{purrr}` library. To do so, we will need a special function to pass to the `purrr::map` function. You can follow this same pattern anytime you want to use `{purrr}` with `uth_make_outcome_count`.
+
+```{r}
+aggregate_cols <- c(
+  'gender_code', 
+  'student_type_code',
+  'is_international',
+  c('gender_code', 'student_type_code'),
+  c('gender_code', 'is_international'),
+  c('student_type_code', 'is_international'),
+  c('gender_code', 'student_type_code', 'is_international')
+)
+
+special_purrr_function <- function(...) {
+  
+  output_df <- uth_make_outcome_count(test_df, ...)
+  
+  return(output_df)
+  
+}
+
+holder_list <- purrr::map(aggregate_cols, special_purrr_function)
+```
+
+`holder_list` is a list of data frames containing all the data frames you wanted to produce. You can use the following pattern to pull the data frames out of `holder_list`.
+
+```{r}
+holder_list[[1]] %>% gt()
+```
+
+Or, if you want to produce a spreadsheet for each of the data frames in `holder_list` use the following pattern.
+
