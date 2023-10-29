@@ -187,6 +187,31 @@ holder_list[[6]] %>%
   style_table()
 ```
 
-Or, if you want to produce a spreadsheet for each of the data frames in `holder_list` use the following pattern.
+### Spreadsheets
+
+If you want to produce a spreadsheet for each of the data frames in `holder_list` use the following pattern.
+
+```{r, eval = FALSE}
+uth_make_workbook <-function(raw_data, file_name, folder = "sensitive/") {
+  
+  wb <- createWorkbook()
+  for (i in seq_along(raw_data)) {
+    addWorksheet(wb, sheetName = paste(names(raw_data)[[i]]))
+    writeData(wb, sheet = i, x = raw_data[[i]])
+    
+  }
+  list
+  
+  file_place <-  paste0(folder, file_name, ".xlsx")
+  
+  saveWorkbook(wb, file = here::here(file_place), overwrite = TRUE)
+}
+```
+
+```{r, eval = FALSE}
+uth_make_workbook(holder_list, 'headcount_metrics')
+```
+
+
 
 
