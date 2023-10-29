@@ -2,8 +2,8 @@ Package: utHelpR
 Title: Utility functions for Utah Tech Office of Institutional Effectiveness
 Version: 0.0.0.9000
 Authors@R: c(
-  person("LaVoy", "Canfield", email = "lavoy.canfield@utahtech.com", role = c("aut", "cre")),
-  person("Matt", "Nickodemus", email = "matt.nickodemus@utahtech.com", role = "aut")
+  person("Matt", "Nickodemus", email = "matt.nickodemus@utahtech.com", role = c("aut", "cre")),
+  person("Craig", "Demke", email = "craig.demke@utahtech.com", role = "aut")
   )
 Description: This package contails utility functions for UT OIE.
 License: MIT + file LICENSE
@@ -31,7 +31,8 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    tidyverse
+    tidyverse,
+    gt
 URL: https://github.com/dsu-effectiveness/utHelpR
 BugReports: https://github.com/dsu-effectiveness/utHelpR/issues
 Depends: 
