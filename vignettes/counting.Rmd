@@ -1,5 +1,5 @@
 ---
-title: "counting"
+title: "Counting"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{counting}
@@ -14,16 +14,44 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+<img src="count.png" alt="the count" 
+     style="float: left; margin-right: 10px; width:100px; border:none;"/>
+  
+<span style="padding-top: 10px; padding-bottom: 10px;">   
+The IE Office at Utah Tech has several tools streamlining the process for producing headcount disaggregated by groups. The tools from `{utDataStoR}` combined with tools from `{utHelpR`} make it easy to produce and publish headcount tables and graphs in minutes. You can use `{utDataStoR}` to produce the sql query for the populations you would like to analyse, and then use `{utHelpR}` to shape the data into table in just a few lines of code. You can then use markdown to add narrative to your tables. Once you are finished, your work can be published with a single button.
+</span>
+
+---------
+
+## Vignette Overview
+
+`{utHelpR}` has several functions to minimize the amount of code needed to produce reports. In this vignette, we describe how to quickly produce reports involving headcount. We make use of three functions to quickly produce pivot tables with counts  
+
+- We use `utHelpR::uth_make_outcome_count` to compute headcount.
+- We use `heHelpR::uth_snake_to_title` to convert column title from data frames into pretty column names for tables and graphs.
+- We use `purrr::map` to quickly compute aggregate headcounts disaggregated over lists of attributes.
+
+We use the following libraries for our recipe.
+
 ```{r setup}
 library(utHelpR)
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 library(purrr)
 library(gt)
+library(stringr)
 ```
 
-In this vignette, we will describe how to use `uth_make_outcome_count` to compute headcount. We will also show how to quickly compute the aggregate headcount over several student attributes using the `{purrr}` library. 
+## Getting Started
 
-We will start by creating a data frame with student information from `fake_enrollment`. `fake_enrollment` is fake training data set with `NA` values in several columns. We will start by selecting the student attributes we want to aggregate over, and then filtering out the `NA` values.
+```{r}
+uth_snake_to_title <- function(text) {
+  stringr::str_replace_all(text, "_", " ") %>% 
+    stringr::str_to_title()
+}
+```
+
+We start by creating a data frame with student information from the data frame `fake_enrollment`. `fake_enrollment` is a fake training data set included in the `utHelpR` library. This data frame has `NA` values in several columns. This will give us an opportunity to practice cleaning data and selecting the student attributes we want to aggregate over.
 
 ```{r}
 test_df <- fake_enrollment %>% 
@@ -49,6 +77,52 @@ This produces a single data frame.
 gt(headcount_by_gender)
 ```
 
+This table looks good, but the column titles are written in snake case. We would prefer they were written in title case. To accomplish this, we use the function `uth_snake_to_title`. This function takes text written in `snake_case` and converts it to text written in `Title Case`.
+
+```{r}
+headcount_by_gender %>% 
+  rename_with(uth_snake_to_title, everything()) %>% 
+  gt()
+```
+
+This table looks better, but we would like the column titled count to be called headcount, and we would like the gender codes to be centered. We are planning to produce tables like this for several groups of aggregates, so we would like to use a function to do this styling. We will specify the column to center to be the first column.
+
+```{r}
+headcount_by_gender %>% 
+  rename(headcount = count) %>% 
+  rename_with(uth_snake_to_title, everything()) %>% 
+  gt() %>% 
+  cols_align(
+    align = "center",
+    columns = 1
+  )
+```
+
+The function we can use to style our tables will be
+
+```{r}
+style_table <- function(table) {
+  table %>% 
+    rename(headcount = count) %>% 
+  rename_with(uth_snake_to_title, everything()) %>% 
+  gt() %>% 
+  cols_align(
+    align = "center",
+    columns = 1
+  )
+}
+```
+
+So, our recipe for building a table becomes
+
+```{r}
+headcount_by_gender %>% 
+  style_table()
+```
+
+## More groups
+
+
 What if we want to produce the headcount of all female students aggregated by student type code?
 
 ```{r}
@@ -57,7 +131,8 @@ female_headcount_by_student_type_code <- test_df %>%
   select(student_id, student_type_code) %>% 
   uth_make_outcome_count(student_type_code)
 
-gt(female_headcount_by_student_type_code)
+female_headcount_by_student_type_code %>% 
+  style_table()
 ```
 
 Next suppose we want to produce the headcount for all students, but now we want to aggregate by gender and student type code.
@@ -67,13 +142,18 @@ total_headcount_by_student_type_and_gender <- test_df %>%
   select(student_id, gender_code, student_type_code) %>% 
   uth_make_outcome_count(gender_code, student_type_code)
 
-gt(total_headcount_by_student_type_and_gender)
+total_headcount_by_student_type_and_gender %>% 
+  style_table()
 ```
 
-Now suppose that we want to compute the headcount for the total student population, but we want to aggregate this over several different combinations of our three colums. Here we will use the `{purrr}` library. To do so, we will need a special function to pass to the `purrr::map` function. You can follow this same pattern anytime you want to use `{purrr}` with `uth_make_outcome_count`.
+## Lots and lots of groups
+
+Now suppose that we want to compute the headcount for the total student population, but we want to aggregate this over several different combinations of our three columns. Here we will use the `{purrr}` library. Specifically we are going to use the functional `purrr::map()`. You can find a good introduction to functionals in [Chapter 9](https://adv-r.hadley.nz/functionals.html#map) of the text [Advanced R](https://adv-r.hadley.nz/index.html) by Hadley Wickham.  
+
+We will pass our function `uth_make_outcome_count()` to `purrr::map()` in two different, but equivalent ways. The first method is longer and requires us to define a function to pass to `purrr::map()`. The second method uses 
 
 ```{r}
-aggregate_cols <- c(
+aggregate_cols <- list(
   'gender_code', 
   'student_type_code',
   'is_international',
@@ -94,11 +174,19 @@ special_purrr_function <- function(...) {
 holder_list <- purrr::map(aggregate_cols, special_purrr_function)
 ```
 
+We can skip the function definition by using the `~` operator. 
+
+```{r}
+holder_list <- purrr::map(aggregate_cols, ~uth_make_outcome_count(test_df, .))
+```
+
 `holder_list` is a list of data frames containing all the data frames you wanted to produce. You can use the following pattern to pull the data frames out of `holder_list`.
 
 ```{r}
-holder_list[[1]] %>% gt()
+holder_list[[6]] %>%
+  style_table()
 ```
 
 Or, if you want to produce a spreadsheet for each of the data frames in `holder_list` use the following pattern.
+
 
