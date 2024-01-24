@@ -38,6 +38,8 @@ A data frame with 10,000 rows and 32 columns:
 \item{primary_level_class_id}{}
 \item{primary_degree_id}{}
 \item{institutional_cumulative_credits_earned}{}
+\item{is_graduated }{}
+\item{is_returned_next_fall}{}
 }
 }
 \source{
