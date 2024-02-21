@@ -36,6 +36,8 @@
 #'  \item{primary_level_class_id}{}
 #'  \item{primary_degree_id}{}
 #'  \item{institutional_cumulative_credits_earned}{}
+#'  \item{is_graduated }{}
+#'  \item{is_returned_next_fall}{}
 #' }
 #' @source this script
 
@@ -123,13 +125,19 @@ major <- tibble(
   institutional_cumulative_credits_earned = sample(credits, sample_size, replace = TRUE)
 )
 
+rate_data <- tibble(
+  is_graduated = fake_bool(sample_size),
+  is_returned_next_fall = fake_bool(sample_size)
+)
+
 fake_enrollment <- bind_cols(
   names,
   local_address,
   mailing_address,
   code_stuff,
   demographic,
-  major
+  major,
+  rate_data
 )
 
 usethis::use_data(fake_enrollment, overwrite = TRUE)
