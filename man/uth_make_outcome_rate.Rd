@@ -29,10 +29,6 @@ Use this function to aggregate counts and totals to then make rates in a data fr
 }
 \examples{
 utHelpR::uth_make_outcome_rate(fake_enrollment, "is_graduated", "gender_code", "primary_degree_id")
-utHelpR::uth_make_outcome_rate(fake_enrollment, "is_returned_next_fall", "gender_code", "student_type_code")
-}
-\seealso{
-Other rate functions: 
-\code{\link{uth_make_metric_table_rate}()}
+utHelpR::uth_make_outcome_rate(fake_enrollment, "is_returned_next_fall", "student_type_code")
 }
 \concept{rate functions}

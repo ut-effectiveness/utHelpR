@@ -19,26 +19,29 @@
 #' @return A table with aggregated counts, totals, and rates of column attributes
 #' @export
 #' @importFrom dplyr select mutate group_by summarise relocate
-#' @importFrom tidyr pivot_wider
+#' @importFrom tidyr pivot_wider replace_na
 #' @importFrom magrittr %>%
 #' @importFrom scales percent
 #' @importFrom rlang sym
 #' @examples utHelpR::uth_make_outcome_rate(fake_enrollment, "is_graduated", "gender_code", "primary_degree_id")
-#' @examples utHelpR::uth_make_outcome_rate(fake_enrollment, "is_returned_next_fall", "gender_code", "student_type_code")
+#' @examples utHelpR::uth_make_outcome_rate(fake_enrollment, "is_returned_next_fall", "student_type_code")
 
 uth_make_outcome_rate <- function(.data, rate_var, ...){
 
   output_df <- .data %>%
     dplyr::select(!! rlang::sym(rate_var), ...) %>%
-    dplyr::mutate(rate_var = !! rlang::sym(rate_var)) %>%
-    dplyr::mutate(positive_outcome = dplyr::if_else(is.na(rate_var) | rate_var == FALSE, "outcome_missed", "outcome_achieved")) %>%
-    dplyr::group_by(positive_outcome, dplyr::across(c(...))) %>%
-    dplyr::summarise(count = n(), .groups = "keep") %>%
+    dplyr::mutate(rate_var = !! rlang::sym(rate_var),
+                  positive_outcome = dplyr::if_else(is.na(rate_var) |
+                  rate_var == FALSE, "outcome_missed", "outcome_achieved")) %>%
+    dplyr::select(-c(rate_var, !! rlang::sym(rate_var))) %>%
+    utHelpR::uth_make_outcome_count(., dplyr::everything()) %>%
     tidyr::pivot_wider(names_from = positive_outcome, values_from = count) %>%
-    dplyr::mutate(outcome_total = outcome_achieved + outcome_missed) %>%
-    dplyr::mutate(outcome_rate_num = round(100*(outcome_achieved/outcome_total), digits = 1)) %>%
-    dplyr::mutate(outcome_rate = scales::percent(outcome_rate_num, scale = 1, accuracy = .1)) %>%
-    dplyr::mutate(rate_var = {{rate_var}}) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate_if(is.numeric, ~tidyr::replace_na(., 0)) %>%
+    dplyr::mutate(outcome_total = outcome_achieved + outcome_missed,
+      outcome_rate_num = round(100*(outcome_achieved/outcome_total), digits = 1),
+      outcome_rate = scales::percent(outcome_rate_num, scale = 1, accuracy = .1),
+      rate_var = {{rate_var}}) %>%
     dplyr::relocate(rate_var, .before = outcome_achieved)
 
   return(output_df)
