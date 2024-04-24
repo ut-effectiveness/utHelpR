@@ -7,10 +7,10 @@
 uth_update_utpackages(utpackage)
 }
 \arguments{
-\item{utpackage}{A package on made by Utah Tech Univeristy housed on a Github repo}
+\item{utpackage}{A package on made by Utah Tech University housed on a Github repo}
 }
 \value{
-A package made by Utah Tech Univeristy housed on a Github
+A package made by Utah Tech University housed on a Github
 }
 \description{
 uth_update_utpackages

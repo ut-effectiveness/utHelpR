@@ -1,10 +1,10 @@
 #' uth_update_utpackages
 #'
-#' @param utpackage A package on made by Utah Tech Univeristy housed on a Github repo
+#' @param utpackage A package on made by Utah Tech University housed on a Github repo
 #'
 #' @importFrom devtools install_github
 #' @importFrom gitcreds gitcreds_get
-#' @return A package made by Utah Tech Univeristy housed on a Github
+#' @return A package made by Utah Tech University housed on a Github
 #' @export
 #'
 #'
