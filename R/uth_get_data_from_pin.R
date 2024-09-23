@@ -63,7 +63,7 @@ get_data_from_pin_local <- function(pin_name, prod=TRUE) {
 }
 
 
-#' get_data_from_pins()
+#' get_data_from_pin()
 #' This R function retrieves pins data from a Posit server. It uses the pins package to connect to the server, authenticate, and fetch the required data. This function ensures secure and efficient data retrieval from a Posit server, making it easy to integrate pins data into your R workflows.
 #'
 #' @param pin_name The name of the pin to retrieve hosted on one of Utah Tech's Posit Servers
@@ -72,7 +72,7 @@ get_data_from_pin_local <- function(pin_name, prod=TRUE) {
 #' @return The name of the pin to retrieve
 #' @export
 #'
-uth_get_data_from_pins <- function(pin_name, prod=TRUE){
+uth_get_data_from_pin <- function(pin_name, prod=TRUE){
 
   output_df <- tryCatch(get_data_from_pin_prod(pin_name),
                         error=function(e) get_data_from_pin_test(pin_name),
