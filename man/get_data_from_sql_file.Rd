@@ -4,7 +4,7 @@
 \alias{get_data_from_sql_file}
 \title{Get data from a sql file}
 \usage{
-get_data_from_sql_file(file_name, dsn, context = "project")
+get_data_from_sql_file(file_name, dsn = "edify", context = "project")
 }
 \arguments{
 \item{file_name}{The name of the SQL file you want to use.}
