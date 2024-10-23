@@ -32,7 +32,8 @@ Imports:
     rlang,
     scales,
     devtools,
-    gitcreds
+    gitcreds,
+    stats
 Suggests: 
     knitr,
     rmarkdown,

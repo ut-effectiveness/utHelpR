@@ -11,5 +11,6 @@ utils::globalVariables(c(
   "outcome_total",
   "positive_outcome",
   ".",
-  "student_id"
+  "student_id",
+  "median"
 ))
