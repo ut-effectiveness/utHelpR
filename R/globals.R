@@ -10,6 +10,11 @@ utils::globalVariables(c(
   "outcome_achieved",
   "outcome_total",
   "positive_outcome",
-  ".",
-  "student_id"
+  "student_id",
+  "Repository",
+  "Package",
+  "available_packages_check",
+  "my_packages_info",
+  "Priority",
+  "is_installed"
 ))
