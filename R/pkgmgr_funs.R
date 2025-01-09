@@ -39,16 +39,20 @@ uth_save_my_pkg_info <- function() {
     mutate(is_installed = TRUE)
 
   # Get the path to the temporary directory
-  temp_dir <- tempdir()
+  #temp_dir <- tempdir()
 
   # Define the file path
-  file_path <- file.path(temp_dir, "my_packages_info.rda")
+  #file_path <- file.path(temp_dir, "my_packages_info.rda")
+
+  # Determine the download folder path
+  download_folder <- path.expand("~/Downloads")
+  file_path <- file.path(download_folder, "my_packages_info.rda")
 
   # Save the output to the file
   save(my_packages_info, file = file_path)
 
   # Inform the user that the file has been saved
-  message("A temp file of your current packages has been saved successfully to: ", file_path)
+  message("A file of your current packages has been saved successfully to: ", file_path)
 
   return(file_path)  # Return the file path for later retrieval
 }
@@ -64,20 +68,24 @@ uth_save_my_pkg_info <- function() {
 #'
 uth_load_my_pkg_info <- function() {
   # Get the path to the temporary directory
-  temp_dir <- tempdir()
+  #temp_dir <- tempdir()
 
   # Define the file path
-  file_path <- file.path(temp_dir, "my_packages_info.rda")
+  #file_path <- file.path(temp_dir, "my_packages_info.rda")
+
+  download_folder <- path.expand("~/Downloads")
+  file_path <- file.path(download_folder, "my_packages_info.rda")
+
 
   # Check if the file exists
   if (file.exists(file_path)) {
     # Load the file
     load(file_path)
-    message("The temp file of your packages has been loaded successfully.")
+    message("The file of your packages has been loaded successfully.")
     return(my_packages_info)
   } else {
     # Give a warning message
-    warning("The  temp file of your packages does not exist. Please run the 'save_my_packages_info' function first.")
+    warning("The file of your packages does not exist. Please run the 'save_my_packages_info' function first.")
     return(NULL)
   }
 }
@@ -110,13 +118,13 @@ uth_install_from_pkg_mgr <- function(update_and_install = FALSE) {
     dplyr::mutate(is_installed = !is.na(is_installed)) %>%
     dplyr::filter(is_installed)
 
-  temp_dir <- tempdir()
+  #temp_dir <- tempdir()
 
-  file_path <- file.path(temp_dir, "my_packages_info.rda")
+  #file_path <- file.path(temp_dir, "my_packages_info.rda")
 
-  file.exists(file_path)
-  file.remove(file_path)
-  message("Temporary file has been deleted.")
+  #file.exists(file_path)
+  #file.remove(file_path)
+  #message("Temporary file has been deleted.")
 
   #  Install packages if install is TRUE
   if (update_and_install == TRUE) {
