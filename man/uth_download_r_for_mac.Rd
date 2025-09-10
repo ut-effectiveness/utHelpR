@@ -7,7 +7,7 @@
 uth_download_r_for_mac(suggested_version, mac_type)
 }
 \arguments{
-\item{suggested_version}{user input of a desired version of R example "R.4.4.1" as a string}
+\item{suggested_version}{user input of a desired version of R example "4.4.1" as a string}
 
 \item{mac_type}{a string signifying user's Mac processor type, currently supports "M1" or "Intel"}
 }

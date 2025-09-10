@@ -2,13 +2,26 @@
 % Please edit documentation in R/project_util.R
 \name{make_standard_folders}
 \alias{make_standard_folders}
-\title{Make a directory structure for a standard project}
+\title{Make a Standard Directory Structure for a Project}
 \usage{
 make_standard_folders()
 }
 \description{
-\code{make_standard_folders()} will create our standard directory structure in the
-file you are in when you run it. You should run this function when you are
-setting up a project. When you run \code{make_standard_folders()} you should be in
-the same directory as your .Rproj file.
+\code{make_standard_folders()} creates a standard directory structure in the current working directory. This function should be run when setting up a new project. Ensure you are in the same directory as your \code{.Rproj} file when running this function.
+}
+\details{
+This function performs the following tasks:
+\itemize{
+\item Checks for the presence of an \code{.Rproj} file in the current directory.
+\item Creates standard folders: \code{data}, \code{sensitive}, \code{markdown}, \code{R}, and \code{sql}.
+\item Initializes a Git repository if one does not exist.
+\item Adds a test file in the \code{sensitive} folder.
+\item Updates the \code{.gitignore} file to exclude the \code{sensitive} folder, \code{.html} files, and \code{.DS_Store} from version control, ensuring no duplicates.
+}
+}
+\examples{
+\dontrun{
+# Example usage:
+make_standard_folders()
+}
 }

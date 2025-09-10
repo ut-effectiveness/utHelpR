@@ -20,7 +20,7 @@ uth_check_pkg_mgr_status <- function() {
   message("This is your current R version: ", current_r_version)
   message("This is your current Posit package manager URL: ", current_package_manager_url)
 
-  browseURL("https://rs-connect.utahtech.edu/dev_book/")
+  message ("you can find instuctions on https://rs-connect.utahtech.edu/dev_book/")
 }
 
 
@@ -102,7 +102,7 @@ uth_load_my_pkg_info <- function() {
 #' @importFrom dplyr select mutate left_join filter
 #' @importFrom utils available.packages install.packages installed.packages update.packages
 #'
-uth_install_from_pkg_mgr <- function(update_and_install = FALSE) {
+uth_install_from_pkg_mgr <- function() {
 
   # Get available packages from the package manager
   available_packages <- as.data.frame(available.packages()) %>%
@@ -118,23 +118,11 @@ uth_install_from_pkg_mgr <- function(update_and_install = FALSE) {
     dplyr::mutate(is_installed = !is.na(is_installed)) %>%
     dplyr::filter(is_installed)
 
-  #temp_dir <- tempdir()
+  #  Install packages
 
-  #file_path <- file.path(temp_dir, "my_packages_info.rda")
-
-  #file.exists(file_path)
-  #file.remove(file_path)
-  #message("Temporary file has been deleted.")
-
-  #  Install packages if install is TRUE
-  if (update_and_install == TRUE) {
     utils::update.packages(available_packages_check$Package)
     utils::install.packages(available_packages_check$Package)
     message("Packages have been successfully updated and installed.")
-  } else {
-    update.packages(available_packages_check$Package)
-    message("Packages have been successfully updated. If you wanted to install new packages please re-run with the arugment 'update_and_install == TRUE'")
-  }
 
 }
 
@@ -143,7 +131,7 @@ uth_install_from_pkg_mgr <- function(update_and_install = FALSE) {
 #'
 #'The `uth_download_r_for_mac` function constructs a download URL for the specified version of R based on the type of Mac (either "M1" or other). It sets the base URL for CRAN, appends the appropriate architecture specification (-arm64 for M1 or -x86_64 for others), and forms the complete download link and file name. The function then determines the download folder path, constructs the destination file path, and attempts to download the file using download.file, handling any errors with tryCatch. If successful, it informs the user of the download location; otherwise, it provides an error message. This function simplifies downloading the correct version of R for different Mac architectures.
 #'
-#' @param suggested_version user input of a desired version of R example "R.4.4.1" as a string
+#' @param suggested_version user input of a desired version of R example "4.4.1" as a string
 #' @param mac_type  a string signifying user's Mac processor type, currently supports "M1" or "Intel"
 #'
 #' @return a download R file from CRAN in the user's download folder.
@@ -179,3 +167,5 @@ uth_download_r_for_mac <- function(suggested_version, mac_type) {
     message("Failed to download ", file_name, ": ", e$message)
   })
 }
+
+

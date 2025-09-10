@@ -16,5 +16,8 @@ utils::globalVariables(c(
   "available_packages_check",
   "my_packages_info",
   "Priority",
-  "is_installed"
+  "is_installed",
+  "last_digit",
+  "gender_code",
+  "gender_code_assigned"
 ))

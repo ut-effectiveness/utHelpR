@@ -4,7 +4,7 @@
 \alias{uth_install_from_pkg_mgr}
 \title{Utah Tech install from Posit package manager}
 \usage{
-uth_install_from_pkg_mgr(update_and_install = FALSE)
+uth_install_from_pkg_mgr()
 }
 \arguments{
 \item{update_and_install}{It has a single parameter update_and_install which defaults to FALS which will only update currently installed packages. If you want to install new packages use please use TRUE.}
